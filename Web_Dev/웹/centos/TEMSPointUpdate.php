@@ -1,4 +1,16 @@
 <?php
+function sqlUpdateTheScore($idMinusOneString){
+    $sql_addr = "34.66.52.207";
+    $sql_user_name="dbaccess";
+    $sql_pwd="0000";
+    $sql_db_name="TEMS_SQL_Point";
+    $sql_table_name_of_it="Point";
+	$conn = mysqli_connect($sql_addr,$sql_user_name,$sql_pwd,$sql_db_name) or die("Connection Failed");
+    $idminusOneVal=(int)$idMinusOneVal;
+    $MsgQuery=mysqli_query($conn,"UPDATE Point SET Point=".returnCurrentPoint($idMinusOneVal)."WHERE id=".($idMinusOneVal+1).";");
+    mysqli_close($conn);
+}
+
     $sql_addr = "34.66.52.207";
     $sql_user_name="dbaccess";
     $sql_pwd="0000";
@@ -67,14 +79,20 @@
     $sorted_element=0;//0:id, 1:name, 2:birthday, 3:age
     $sorted_increase_decrease=0;//0: increase, 1: decrease
     
-    print '<table id="myTable" border="2"><tr><th align="center" width="40"><strong>id &#62;</strong></th><th align="center"><strong>name</strong></th><th align="center" width="85"><strong>Age</strong></th><th align="center"><strong>Point</strong></th></tr>';
+    print '<table id="myTable" border="2"><tr><th align="center" width="40"><strong>id &#62;</strong></th><th align="center"><strong>name</strong></th><th align="center" width="85"><strong>Age</strong></th><th align="center"><strong>Point</strong></th><th>SAVE</th></tr>';
     for($i=0;$i<$tot;$i++){
         print "<tr>" ; 
         print "<td align='center'>" .$tot_result[$i][0]."</td>";
         print "<td align='center'>" .$tot_result[$i][1]."</td>";
         print "<td align='center'>" .$tot_result[$i][2]."</td>";
-        print "<td align='center'><button id='dec_".$i."' onclick='decreaseByOne($i);'>-1</button><div id='pointOfStudent".$i."'>" .$tot_result[$i][3]."</div><button id='inc_".$i."' onclick='increaseByOne(".$i.");'>+1</button></td>";
+        print "<td align='center'><button id='dec_".$i."' onclick='decreaseByOne(".$i.");'>-1</button><div id='pointOfStudent".$i."'>" .$tot_result[$i][3]."</div><button id='inc_".$i."' onclick='increaseByOne(".$i.");'>+1</button></td>";
+        print "<td align='center'><form method='post'><input type='submit' name='button'".i." value='SAVE'/></form></td>";/*<button onclick='sqlUpdateTheScore(".$i.");'>SAVE</button>*/
         print "</tr>" ;
+    }
+    for($i=0;$i<$tot;$i++){
+        if(isset($_POST['button'+$i])) { 
+            echo "This is Button".$i." that is selected"; 
+        }
     } 
     /*if(count($_COOKIE)> 0) {
         echo "Cookies are enabled.";
