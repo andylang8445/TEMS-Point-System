@@ -1,5 +1,7 @@
 <?php
 function sqlUpdateTheScore($idMinusOneString){
+    $message="The function is Finally Called!".$idMinusOneString;
+    echo "<script type='text/javascript'>alert('$message');</script>";
     $sql_addr = "34.66.52.207";
     $sql_user_name="dbaccess";
     $sql_pwd="0000";
@@ -86,7 +88,7 @@ function sqlUpdateTheScore($idMinusOneString){
         print "<td align='center'>" .$tot_result[$i][1]."</td>";
         print "<td align='center'>" .$tot_result[$i][2]."</td>";
         print "<td align='center'><button id='dec_".$i."' onclick='decreaseByOne(".$i.");'>-1</button><div id='pointOfStudent".$i."'>" .$tot_result[$i][3]."</div><button id='inc_".$i."' onclick='increaseByOne(".$i.");'>+1</button></td>";
-        print "<td align='center'><form method='post'><input type='submit' name='button'".i." value='SAVE'/></form></td>";/*<button onclick='sqlUpdateTheScore(".$i.");'>SAVE</button>*/
+        print "<td align='center'><button onclick='document.write(".sqlUpdateTheScore(".$i.").")>SAVE</button></td>";//<form method='post'><input type='submit' name='button'".i." value='SAVE'/></form>
         print "</tr>" ;
     }
     for($i=0;$i<$tot;$i++){
