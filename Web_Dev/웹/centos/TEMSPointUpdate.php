@@ -23,7 +23,7 @@ function sqlUpdateTheScore($idMinusOneString){
 	
 	//print "html_table_sql.php loaded";
 
-    print '<!DOCTYPE html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Point Board</title><link rel="stylesheet" type="text/css" href="html_table_sql.css"></head>';
+print '<!DOCTYPE html><head><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Point Update Board</title><link rel="stylesheet" type="text/css" href="TEMSPointUpdate.css"><script type="text/javascript" src="TEMSPointUpdate.js"></script><script type="text/javascript" src="TEMSPointUpdate2.js"></script><script type="text/php" src="TEMSPointUpdate.php"></script></head><body>';
 
 	$tot=0;
     $tot_result=array(
@@ -74,7 +74,6 @@ function sqlUpdateTheScore($idMinusOneString){
         //wprint "</tr>";
 		$tot++;
 	}
-    echo '<script type="text/javascript" src="TEMSPointUpdate.js"></script>';
     //array_multisort($sort, SORT_ASC, SORT_STRING,$tot_result);
     $sort_sel=1;
     $previous=0;
@@ -88,19 +87,17 @@ function sqlUpdateTheScore($idMinusOneString){
         print "<td align='center'>" .$tot_result[$i][1]."</td>";
         print "<td align='center'>" .$tot_result[$i][2]."</td>";
         print "<td align='center'><button id='dec_".$i."' onclick='decreaseByOne(".$i.");'>-1</button><div id='pointOfStudent".$i."'>" .$tot_result[$i][3]."</div><button id='inc_".$i."' onclick='increaseByOne(".$i.");'>+1</button></td>";
-        print "<td align='center'><button onclick='document.write(".sqlUpdateTheScore(".$i.").")>SAVE</button></td>";//<form method='post'><input type='submit' name='button'".i." value='SAVE'/></form>
+        print "<td align='center'><button class='save_button' value=$i>SAVE</button>SAVE</button></td>";//<form method='post'><input type='submit' name='button'".i." value='SAVE'/></form>
         print "</tr>" ;
     }
-    for($i=0;$i<$tot;$i++){
-        if(isset($_POST['button'+$i])) { 
-            echo "This is Button".$i." that is selected"; 
-        }
-    } 
     /*if(count($_COOKIE)> 0) {
         echo "Cookies are enabled.";
     } else {
         echo "Cookies are disabled.";
     }*/
+if (isset($_POST['idMinusOneString'])) {
+    sqlUpdateTheScore($_POST['idMinusOneString']);
+}
     $sort=array();
     for($i=0;$i<$tot-1;$i++){ 
         for($j=$i+1;$j<$tot;$j++){ 
@@ -115,6 +112,5 @@ function sqlUpdateTheScore($idMinusOneString){
         }
     }
     mysqli_close($conn);
-    //print "<br><a href='table.html'>Main screen</a>";
-    print "</html>";
+echo '</body>';
 ?>
