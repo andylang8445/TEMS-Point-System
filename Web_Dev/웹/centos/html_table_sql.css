@@ -1,3 +1,10 @@
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 table, td{
     border: 1px solid black
 }
@@ -43,15 +50,15 @@ body {
         background-color: darkgray;
     }
 
-    footer {
+    div.footer {
         padding-left: 2%;
         padding-right: 2%;
         padding-bottom: 2%;
-        position: absolute;
+        position: relative;
         bottom: 0;
-        width: 96%; 
+        width: 100%;
         background-color: lightgray;
-        columns: 2; 
+        columns: 2;
     }
     div.block{
         padding-top: 1.5%;

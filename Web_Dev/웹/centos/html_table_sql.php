@@ -61,7 +61,7 @@
 		$tot++;
 	}
   print '<body><div class="topnav"><a href="index.html">Main Console</a>
-          <a class="active" href="">Ranking Board</a><a href="https://www.temsacademy.com/contact-us">Contact</a><a href="https://www.temsacademy.com/about">About</a></div><div class="block"></div>';
+          <a class="active" href="">Ranking Board</a><a href="IamAtutor.html">Tutor Login</a></div><div class="block"></div>';
     echo '<script type="text/javascript" src="html_table_sql.js"></script>';
     //array_multisort($sort, SORT_ASC, SORT_STRING,$tot_result);
     $sort_sel=1;
@@ -80,28 +80,8 @@
         print "</tr>" ;
     }
     print '</table></div>';
-    /*if(count($_COOKIE)> 0) {
-        echo "Cookies are enabled.";
-    } else {
-        echo "Cookies are disabled.";
-    }*/
-
-    /*$sort=array();
-    for($i=0;$i<$tot-1;$i++){
-        for($j=$i+1;$j<$tot;$j++){
-            if($tot_result[$i][1]>$tot_result[$j][1]){
-                $tmp;
-                for($k=0;$k<4;$k++){
-                    $tmp=$tot_result[$i][$k];
-                    $tot_result[$i][$k]=$tot_result[$j][$k];
-                    $tot_result[$j][$k]=$tmp;
-                }
-            }
-        }
-    }*/
     mysqli_close($conn);
 print '<div class="block"/>';
-    print '<div class="footer"><p>&copy; Copyright <script type="text/javascript">var d = new Date()document.write(d.getFullYear())</script>, Canada TEMS Academy<br><img src="https://storage.googleapis.com/tems_point_system_image_storage_2/52dee1_8a31d53908ce2a3ee4eb3194319ff85b.png" width="80px" alt="TEMS LOGO"></p><p align="right" class="ex1">Webpage created by Hongjun Yun<br>hongjun.yun@icloud.com</p><div>';
-    //print "<br><a href='table.html'>Main screen</a>";
+    print '<div class="footer"><p>&copy; Copyright <script type="text/javascript">var d = new Date()document.write(d.getFullYear())</script>, Canada TEMS Academy<br><img src="https://storage.googleapis.com/tems_point_system_image_storage_2/52dee1_8a31d53908ce2a3ee4eb3194319ff85b.png" width="80px" alt="TEMS LOGO"></p><p align="right" class="ex1">Webpage created by Hongjun Yun<br>hongjun.yun@icloud.com</p></div>';
     print "</body></html>";
 ?>
