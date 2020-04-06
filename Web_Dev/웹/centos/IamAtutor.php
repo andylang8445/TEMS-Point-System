@@ -35,7 +35,7 @@ if ($stmt = $con->prepare('SELECT id, password FROM Login WHERE username = ?')) 
   		$_SESSION['name'] = $_POST['username'];
   		$_SESSION['id'] = $id;
   		echo 'Welcome ' . $_SESSION['name'] . '!';
-      header("Location: index.html");
+      header("Location: GivePointToStudents.html");
   	} else {
   		echo 'Incorrect password!';
   	}
