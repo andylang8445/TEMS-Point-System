@@ -45,7 +45,7 @@
         array()
     );
 
-	$re=mysqli_query($conn,"select * from Point order by id;");
+	$re=mysqli_query($conn,"select * from Point order by TotalPoint DESC,AcademicPoint DESC,SocialPoint DESC,Name;");
 	//print '<table border="2"><tr><th>id</th><th>name</th><th>birthday</th><th>age</th></tr>';
 	while($result=mysqli_fetch_array($re)){
         //print "<tr>";
