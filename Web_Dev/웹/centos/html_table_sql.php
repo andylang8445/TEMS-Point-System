@@ -56,12 +56,16 @@
 		//print "<td>".$result[1]."</td>";
         $tot_result[$tot][2]=$result[2];
 		//print "<td>".$result[2]."</td>";
-    $tot_result[$tot][3]=$result[3];
-    $tot_result[$tot][4]=$result[4];
-    $tot_result[$tot][5]=$result[5];
+        $tot_result[$tot][3]=$result[3];
+        $tot_result[$tot][4]=$result[4];
+        $tot_result[$tot][5]=$result[5];
 
+        if(((int)$tot_result[$tot][2]+(int)$tot_result[$tot][3]+(int)$tot_result[$tot][4])!=(int)$tot_result[$tot][5]){
+          $tot_result[$tot][5]=(int)$tot_result[$tot][2]+(int)$tot_result[$tot][3]+(int)$tot_result[$tot][4];
+          mysqli_query($conn,"update Point set TotalPoint = ".((string)$tot_result[$tot][5])." where id = '".((string)$tot_result[$tot][0])."';");
+        }
         //wprint "</tr>";
-		$tot++;
+        $tot++;
 	}
   print '<body><div class="topnav"><a href="index.html">Main Console</a>
           <a class="active" href="">Ranking Board</a><a href="IamAtutor.html">Tutor Login</a></div><div class="block"></div>';
@@ -73,7 +77,7 @@
     $sorted_increase_decrease=0;//0: increase, 1: decrease
 
 
-    print '<div><table id="myTable" border="2"><tr><th align="center"><button id="name_sec" onclick="sortTable2();" style="width:100%; height: 64px; font-size:10.2pt"><strong>Name</strong></button></th><th align="center"><button id="AcademicPoint_sec" onclick="sortTable3();" style="width:100%; height: 64px; font-size:10.2pt"><strong>Academic Points</strong></button></th><th align="center"><button id="SocialPoint_sec" onclick="sortTable4();" style="width:100%; height: 64px; font-size:10.2pt"><strong>Social Contribution Points</strong></button></th><th align="center"><button id="TotalPoint_sec" onclick="sortTable5();" style="width:100%; height: 64px; font-size:10.2pt"><strong>Total Points</strong></button></th></tr>';//<th align="center" width="40"><button id="id_sec" onclick="sortTable1_1();" style="width:100%; height:25px; font-size:10.2pt"><strong>id &#62;</strong></button></th>
+    print '<div><table id="myTable" border="2"><tr><th align="center"><button id="name_sec" onclick="sortTable2();" style="width:100%; min-height: 64px; font-size:10.2pt"><strong>Name</strong></button></th><th align="center"><button id="AcademicPoint_sec" onclick="sortTable3();" style="width:100%; min-height: 64px; font-size:10.2pt"><strong>Academic Points</strong></button></th><th align="center"><button id="SocialPoint_sec" onclick="sortTable4();" style="width:100%; min-height: 64px; font-size:9.5pt"><strong>Social Contribution Points</strong></button></th><th align="center"><button id="TotalPoint_sec" onclick="sortTable5();" style="width:100%; min-height: 64px; font-size:10.2pt"><strong>Total Points</strong></button></th></tr>';//<th align="center" width="40"><button id="id_sec" onclick="sortTable1_1();" style="width:100%; height:25px; font-size:10.2pt"><strong>id &#62;</strong></button></th>
     for($i=0;$i<$tot;$i++){
         print "<tr>" ;
         //print "<td align='center'>" .$tot_result[$i][0]."</td>";

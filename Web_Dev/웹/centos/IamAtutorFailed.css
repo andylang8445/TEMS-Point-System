@@ -1,19 +1,9 @@
 * {
     box-sizing: border-box;
     font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
-    font-size: 15px;
+    font-size: 18px;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-}
-
-table,
-td {
-    border: 1px solid black
-}
-
-table {
-    margin: auto;
-    text-align: center;
 }
 
 body {
@@ -42,7 +32,7 @@ body {
 }
 
 .topnav a.active {
-    background-color: #4CAF50;
+    background-color: #d45364;
     color: white;
 }
 
@@ -51,14 +41,12 @@ header {
     top: 0;
     width: 100%;
     min-height: 8%;
-    background-color: darkgray;
 }
 
 div.footer {
     padding-left: 2%;
     padding-right: 2%;
-    padding-bottom: 2%;
-    position: relative;
+    position: absolute;
     bottom: 0;
     width: 100%;
     background-color: lightgray;
@@ -66,7 +54,7 @@ div.footer {
 }
 
 div.block {
-    padding-top: 1.5%;
+    padding: 4%;
 }
 
 p.ex1 {

@@ -35,12 +35,20 @@ if ($stmt = $con->prepare('SELECT id, password FROM Login WHERE username = ?')) 
   		$_SESSION['name'] = $_POST['username'];
   		$_SESSION['id'] = $id;
   		echo 'Welcome ' . $_SESSION['name'] . '!';
-      header("Location: GivePointToStudents.html");
+      header("Location: GivePointToStudents.php");
   	} else {
-  		echo 'Incorrect password!';
+			echo '<!DOCTYPE html><HEAD><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" type="text/css" href="IamAtutorFailed.css"><TITLE>Main Console</TITLE><link rel="icon" type="image/ico" href="https://storage.googleapis.com/tems_point_system_image_storage_2/TitleImg.png" /></HEAD><BODY><center><div class="topnav"><a  href="IamAtutor.html">Main Console</a><a href="html_table_sql.php">Ranking Board</a><a class="active" href="">Login Failed</a></div></center><center>';
+			echo '<h1>Incorrect password!</h1><br>';
+			echo '<h1><a href="IamAtutor.html">Retry Login</a></h1>';
+			echo '</center><div class="footer"><p>&copy; Copyright <script type="text/javascript">var d = new Date();document.write(d.getFullYear())</script>, Canada TEMS Academy<br><img src="https://storage.googleapis.com/tems_point_system_image_storage_2/52dee1_8a31d53908ce2a3ee4eb3194319ff85b.png" width="80px" alt="TEMS LOGO"></p><p align="right" class="ex1">Webpage created by Hongjun Yun<br>hongjun.yun@icloud.com</p></div></BODY></HTML>';
+
   	}
   } else {
-  	echo 'Incorrect username!';
+		echo '<!DOCTYPE html><HEAD><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" type="text/css" href="IamAtutorFailed.css"><TITLE>Main Console</TITLE><link rel="icon" type="image/ico" href="https://storage.googleapis.com/tems_point_system_image_storage_2/TitleImg.png" /></HEAD><BODY><center><div class="topnav"><a  href="IamAtutor.html">Main Console</a><a href="html_table_sql.php">Ranking Board</a><a class="active" href="">Login Failed</a></div></center><center>';
+		echo '<h1>Incorrect username!</h1><br>';
+		echo '<h1><a href="IamAtutor.html">Retry Login</a></h1>';
+		echo '</center><div class="footer"><p>&copy; Copyright <script type="text/javascript">var d = new Date();document.write(d.getFullYear())</script>, Canada TEMS Academy<br><img src="https://storage.googleapis.com/tems_point_system_image_storage_2/52dee1_8a31d53908ce2a3ee4eb3194319ff85b.png" width="80px" alt="TEMS LOGO"></p><p align="right" class="ex1">Webpage created by Hongjun Yun<br>hongjun.yun@icloud.com</p></div></BODY></HTML>';
+
   }
 
 	$stmt->close();

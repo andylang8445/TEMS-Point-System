@@ -50,13 +50,21 @@
 	while($result=mysqli_fetch_array($re)){
         //print "<tr>";
 		//print "<td>".$result[3]."</td>";
-        $tot_result[$tot][0]=$result[0];
+        $tot_result[$tot][0]=$result[0];//id
 		//print "<td>".$result[0]."</td>";
-        $tot_result[$tot][1]=$result[1];
+        $tot_result[$tot][1]=$result[1];//name
 		//print "<td>".$result[1]."</td>";
-        $tot_result[$tot][2]=$result[2];
+        $tot_result[$tot][2]=$result[2];//Academic Point
 		//print "<td>".$result[2]."</td>";
-        $tot_result[$tot][3]=$result[3];
+        $tot_result[$tot][3]=$result[3];//Social Contribution point
+
+        $tot_result[$tot][4]=$result[4];//Director's point
+        $tot_result[$tot][5]=$result[5];//Total point
+
+        if(((int)$tot_result[$tot][2]+(int)$tot_result[$tot][3]+(int)$tot_result[$tot][4])!=(int)$tot_result[$tot][5]){
+          $tot_result[$tot][5]=(int)$tot_result[$tot][2]+(int)$tot_result[$tot][3]+(int)$tot_result[$tot][4];
+          mysqli_query($conn,"update Point set TotalPoint = ".((string)$tot_result[$tot][5])." where id = '".((string)$tot_result[$tot][0])."';");
+        }
         //wprint "</tr>";
 		$tot++;
 	}
@@ -68,9 +76,13 @@
     for($i=0;$i<$tot;$i++){
         print "<tr>" ;
         //print "<td align='center'>" .$tot_result[$i][0]."</td>";
+        print "<td align='center'>" .$tot_result[$i][0]."</td>";
         print "<td align='center'>" .$tot_result[$i][1]."</td>";
-        print "<td align='center'>" .$tot_result[$i][2]."</td>";
-        print "<td align='center'><p id='LoadedPoint$i'>" .$tot_result[$i][3]."</p></td>";
+        print "<td align='center'><p id='LoadedAcademicPoint$i'>" .$tot_result[$i][2]."</p></td>";
+        print "<td align='center'><p id='LoadedSocialPoint$i'>" .$tot_result[$i][3]."</p></td>";
+        print "<td align='center'><p id='LoadedDirectorPoint$i'>" .$tot_result[$i][4]."</p></td>";
+        print "<td align='center'><p id='LoadedTotalPoint$i'>" .$tot_result[$i][5]."</p></td>";
+
         print "</tr>" ;
     }
     print "<tr><td align='center'>Name</td><td align='center'>18</td><td align='center'><p id='LoadedPoint99'>20</p></td></tr>";
@@ -83,8 +95,18 @@
         print $tot_result[$i][1];
         print "</option>";
     }
-    print '</select><br><label for="currentPoint">Current point for Selected Student: </label><input type="text" id="currentPoint" name="currentPoint" placeholder="Point">';
-    print '<br><button id="M10" onclick="myCalc(-10)">-10</button><button id="M5" onclick="myCalc(-5)">-5</button><button id="P5" onclick="myCalc(5)">+5</button><button id="P10" onclick="myCalc(10)">+10</button><button id="P15" onclick="myCalc(15)">+15</button><button id="P20" onclick="myCalc(20)">+20</button><button id="P50" onclick="myCalc(50)">+50</button><button id="Double" onclick="myDoubleCalc()">X2</button></div></center>';
+    print '</select><br><label for="currentAcademicPoint">Current Academic point: </label><input type="text" id="currentAcademicPoint" name="currentAcademicPoint" placeholder="Academic Point">';
+    print '<br><button id="M10" onclick="myCalc(-10)">-10</button><button id="M5" onclick="myCalc(-5)">-5</button><button id="P5" onclick="myCalc(5)">+5</button><button id="P10" onclick="myCalc(10)">+10</button><button id="P15" onclick="myCalc(15)">+15</button><button id="P20" onclick="myCalc(20)">+20</button><button id="P50" onclick="myCalc(50)">+50</button><button id="Double" onclick="myDoubleCalc()">X2</button>';
+
+    print '<br><br><label for="currentSocialPoint">Current Social Contribution point: </label><input type="text" id="currentSocialPoint" name="currentSocialPoint" placeholder="Social Point">';
+    print '<br><button id="M10" onclick="myCalcSocial(-10)">-10</button><button id="M5" onclick="myCalcSocial(-5)">-5</button><button id="P5" onclick="myCalcSocial(5)">+5</button><button id="P10" onclick="myCalc(10)">+10</button><button id="P15" onclick="myCalcSocial(15)">+15</button><button id="P20" onclick="myCalcSocial(20)">+20</button><button id="P50" onclick="myCalcSocial(50)">+50</button><button id="Double" onclick="myDoubleCalcSocial()">X2</button>';
+
+    print '<br><br><label for="currentDirectorsPoint">Current Director point: </label><input type="text" id="currentDirectorsPoint" name="currentDirectorsPoint" placeholder="Director Point">';
+    print '<br><button id="M10" onclick="myCalcDirector(-10)">-10</button><button id="M5" onclick="myCalcDirector(-5)">-5</button><button id="P5" onclick="myCalcDirector(5)">+5</button><button id="P10" onclick="myCalcDirector(10)">+10</button><button id="P15" onclick="myCalcDirector(15)">+15</button><button id="P20" onclick="myCalcDirector(20)">+20</button><button id="P50" onclick="myCalcDirector(50)">+50</button><button id="Double" onclick="myDoubleCalcDirector()">X2</button>';
+
+    print '<br><br><label for="currentTotalScore">Current Total point: </label><input type="text" id="currentTotalScore" name="currentTotalScore" value="" readonly>';
+
+    print '</div></center>';
     mysqli_close($conn);
 print '<div id="blankArea1" class="block"></div>';
     print '<div class="footer"><p>&copy; Copyright <script type="text/javascript">var d = new Date();document.write(d.getFullYear())</script>, Canada TEMS Academy<br><img src="https://storage.googleapis.com/tems_point_system_image_storage_2/52dee1_8a31d53908ce2a3ee4eb3194319ff85b.png" width="80px" alt="TEMS LOGO"></p><p align="right" class="ex1">Webpage created by Hongjun Yun<br>hongjun.yun@icloud.com</p></div>';
