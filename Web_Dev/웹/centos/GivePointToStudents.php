@@ -121,7 +121,7 @@
     print '</table></div>';
 
 
-    print '<center><div class="block"><select name="Name" id="SelectedName" onchange="myFunction()"><option selected value="0">please select the student</option>';//<th align="center" width="40"><button id="id_sec" onclick="sortTable1_1();" style="width:100%; height:25px; font-size:10.2pt"><strong>id &#62;</strong></button></th>
+    print '<center><div class="block"><select name="Name" id="SelectedName" onchange="myFunction()"><option selected value="0" disabled>please select the student</option>';//<th align="center" width="40"><button id="id_sec" onclick="sortTable1_1();" style="width:100%; height:25px; font-size:10.2pt"><strong>id &#62;</strong></button></th>
     for($i=0;$i<$tot;$i++){
         print '<option value="'.$i.'">';
         print $tot_result[$i][1];
@@ -143,7 +143,6 @@
 
     print '</div><div><ul id="chat"></ul></div></center>';
     mysqli_close($conn);
-    print '<script src="/GivePointToStudentsSocket.js"></script>';
 print '<div id="blankArea1" class="block"></div>';
     print '<div class="footer"><p>&copy; Copyright <script type="text/javascript">var d = new Date();document.write(d.getFullYear())</script>, Canada TEMS Academy<br><img src="https://storage.googleapis.com/tems_point_system_image_storage_2/52dee1_8a31d53908ce2a3ee4eb3194319ff85b.png" width="80px" alt="TEMS LOGO"></p><p align="right" class="ex1">Webpage created by Hongjun Yun<br>hongjun.yun@icloud.com</p></div>';
     print "</body></html>";
