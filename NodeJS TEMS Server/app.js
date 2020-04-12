@@ -32,7 +32,9 @@ var chat = io.of('/chat').on('connection', function (socket) {
         chat.to(room).emit('chat message', "Point DB Updated!");
         con.connect(function (err) {
             if (err) throw err;
-            con.query("update Point set AcademicPoint = "+aPoint+",SocialPoint = "+sPoint+", DirectorsPoint="+dPoint+" where id = "+ident+";", function (err, result, fields) {
+            con.query("update Point set AcademicPoint = "+aPoint+", SocialPoint = "+sPoint+", DirectorsPoint = "+dPoint+"
+where id = "+ident+";
+", function (err, result, fields) {
                 if (err) throw err;
                 console.log(result);
             });

@@ -2,6 +2,15 @@ var WebSocketServer = require('ws').Server;
 var wss = new WebSocketServer({
     port: 8100
 });
+let mysql = require('mysql');
+let config = {
+  host: "34.66.52.207",
+  user: "dbaccess",
+  password: "0000",
+  database: "TEMS_SQL_Point"
+};
+
+
 
 wss.on('connection', function (ws) {
     let date_ob = new Date();
@@ -26,7 +35,7 @@ wss.on('connection', function (ws) {
 
         var msgChar = msg.split('');
         var flagCurrent = 0;
-        var id = "";
+        var idd = "";
         var aPoint = "";
         var sPoint = "";
         var dPoint = "";
@@ -34,7 +43,7 @@ wss.on('connection', function (ws) {
             if (msgChar[i] == ':') {
                 flagCurrent++;
             } else if (flagCurrent == 0) {
-                id = id + msgChar[i];
+                idd = idd + msgChar[i];
             } else if (flagCurrent == 1) {
                 aPoint = aPoint + msgChar[i];
             } else if (flagCurrent == 2) {
@@ -43,11 +52,18 @@ wss.on('connection', function (ws) {
                 dPoint = dPoint + msgChar[i];
             }
         }
-        console.log("id[" + id + "]");
-        console.log("APoint[" + aPoint + "]");
-        console.log("SPoint[" + sPoint + "]");
-        console.log("DPoint[" + dPoint + "]");
-        console.log("----------");
-        ws.send(msg);
+        var id=parseInt(idd);
+        id=id+1;
+        let connection = mysql.createConnection(config);
+        console.log("id[" + id + "], AcademicPoint[" + aPoint + "], SocialPoint[" + sPoint + "], Director'sPoint[" + dPoint + "]");
+        connection.query("update Point set AcademicPoint = " + aPoint + ",SocialPoint = " + sPoint + ", DirectorsPoint=" + dPoint + " where id = " + id + ";", (error, results, fields) => {
+            if (error) {
+                return console.error(error.message);
+            }
+            console.log('Rows affected:', results.affectedRows);
+        });
+        var msgReturn = "DB update Complete!";
+        connection.end();
+        ws.send(msgReturn);
     });
 });

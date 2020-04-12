@@ -23,13 +23,15 @@
 
                     // websocket 에서 수신한 메시지를 화면에 출력한다.
                     ws.onmessage = function(e) {
-                        document.getElementById("log").innerHTML = e.data;
+                        document.getElementById("log").innerHTML = e.data+"<br>Page will be reloaded shortly!";
+                        setTimeout(function(){ location.reload(true); }, 1000);
                     };
 
                     // websocket 세션이 종료되면 화면에 출력한다.
                     ws.onclose = function(e) {
                         document.getElementById("log").style.color = "red";
                         document.getElementById("log").innerHTML = "Connection to Update Server Lost";
+                        setTimeout(function(){ location.reload(true); }, 1000);
                     }
                 });
 
@@ -103,10 +105,9 @@
     echo '<script type="text/javascript" src="GivePointToStudents.js"></script>';
     echo '<div class="block"></div>';
 
-    print '<div style="display:none"><table id="myTable" border="2"><tr><th align="center">name</th><th align="center" width="85">Age</th><th align="center">Point</th></tr>';
+    print '<div style="display:none"><table id="myTable"><tr><th>Name</th><th>Age</th><th>Academic Point</th><th>Social Point</th><th>Directors Point</th><th>Total Point</th></tr>';
     for($i=0;$i<$tot;$i++){
         print "<tr>" ;
-        //print "<td align='center'>" .$tot_result[$i][0]."</td>";
         print "<td align='center'>" .$tot_result[$i][0]."</td>";
         print "<td align='center'>" .$tot_result[$i][1]."</td>";
         print "<td align='center'><p id='LoadedAcademicPoint$i'>" .$tot_result[$i][2]."</p></td>";

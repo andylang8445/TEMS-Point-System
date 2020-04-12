@@ -1,9 +1,9 @@
 function myFunction() {
-    var a = document.getElementById("SelectedName").value;
-    var IdforAcademic = "LoadedAcademicPoint" + (parseInt(a));
-    var IdforSocial = "LoadedSocialPoint" + (parseInt(a));
-    var IdforDirector = "LoadedDirectorPoint" + (parseInt(a));
-    var IdforTotal = "LoadedTotalPoint" + (parseInt(a));
+    var a = parseInt(document.getElementById("SelectedName").value)-1;
+    var IdforAcademic = "LoadedAcademicPoint" + a;
+    var IdforSocial = "LoadedSocialPoint" + a;
+    var IdforDirector = "LoadedDirectorPoint" + a;
+    var IdforTotal = "LoadedTotalPoint" + a;
     var selectedAcademicPoint = document.getElementById(IdforAcademic).innerHTML;
     var selectedSocialPoint = document.getElementById(IdforSocial).innerHTML;
     var selectedDirectorPoint = document.getElementById(IdforDirector).innerHTML;
