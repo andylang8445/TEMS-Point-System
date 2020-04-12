@@ -1,0 +1,82 @@
+* {
+    box-sizing: border-box;
+    font-family: -apple-system, BlinkMacSystemFont, "segoe ui", roboto, oxygen, ubuntu, cantarell, "fira sans", "droid sans", "helvetica neue", Arial, sans-serif;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+    font-size: 20px;
+}
+
+body {
+    position: static;
+    padding: 0;
+    margin: 0;
+}
+
+.content {
+    margin-top: 2%;
+    margin-bottom: 4%;
+    position: relative;
+}
+
+.topnav {
+    overflow: hidden;
+    background-color: #333;
+}
+
+.topnav a {
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
+}
+
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.topnav a.active {
+    background-color: #4CAF50;
+    color: white;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 9%;
+}
+
+div.footer {
+    padding-left: 2%;
+    padding-right: 2%;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    background-color: lightgray;
+    columns: 2;
+    height: 16%;
+}
+
+div.block {
+    padding: 4%;
+}
+
+p.ex1 {
+    padding-top: 16px;
+}
+
+div.rules {
+    margin-left: 8%;
+}
+
+div.rulesTitle {
+    margin-left: 5%;
+    margin-bottom: 2%;
+}
