@@ -138,7 +138,7 @@
 
     print '<br><br><label for="currentTotalScore">Current Total point: </label><input type="text" id="currentTotalScore" name="currentTotalScore" value="" readonly>';
 
-    print '<br><br><br><button type="button" onclick="sendMessage();">Send</button>';
+    print '<br><br><br><button type="button" onclick="sendMessage();">Update Point</button>';
     print '<p id="log"></p>';
 
     print '</div><div><ul id="chat"></ul></div></center>';
