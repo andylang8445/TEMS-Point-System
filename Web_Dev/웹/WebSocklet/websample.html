@@ -1,0 +1,38 @@
+<!<!DOCTYPE html>
+<meta charset="utf-8"/>
+<title>WebSocket Test</title>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  //웹소켓 서버를 설정
+  var socket=io.connect("http://35.182.71.151:3000",{path:"/socket.io"});
+  socket.on('echo',sunction(data){
+    console.log(data);
+    writeToScreen("받은 메시지:"+data)
+  });
+
+  //서버로 데이터 보내는 메소드
+  function sendMessage()
+  {
+    //서버에 구현된 ms 메소드 이용, 메시지 전송
+    mss=document.getElementById("message").value;
+    socket.emit("ms",mss);
+  }
+
+  //받은 메시지 출력
+  function writeToScreen(message)
+  {
+    var pre=documant.createElement("p");
+    pre.style.wordWrap="break-word";
+    pre.innerHTML=message;
+    output.appendChild(pre);
+  }
+</script>
+<h2>소켓 io 동작 테스트</h2>
+<form>
+  <input id="message"/><button type="button" onclick="sendMessage();">전송</button>
+</form>
+
+<div id="output">
+
+</div>

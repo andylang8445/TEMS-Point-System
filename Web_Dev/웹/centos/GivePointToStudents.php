@@ -9,7 +9,38 @@
 
 	//print "html_table_sql.php loaded";
 
-    print '<!DOCTYPE html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Tutors Console</title><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"><link href="GivePointToStudents.css" rel="stylesheet" type="text/css"></head>';
+    print '<!DOCTYPE html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>';
+    print '<script>
+                var ws;
+
+                $(document).ready(function() {
+                    ws = new WebSocket("ws://35.182.71.151:8100");
+
+                    // websocket 서버에 연결되면 연결 메시지를 화면에 출력한다.
+                    ws.onopen = function(e) {
+                        document.getElementById("log").innerHTML = "Connected to Update Server!";
+                    };
+
+                    // websocket 에서 수신한 메시지를 화면에 출력한다.
+                    ws.onmessage = function(e) {
+                        document.getElementById("log").innerHTML = e.data;
+                    };
+
+                    // websocket 세션이 종료되면 화면에 출력한다.
+                    ws.onclose = function(e) {
+                        document.getElementById("log").style.color = "red";
+                        document.getElementById("log").innerHTML = "Connection to Update Server Lost";
+                    }
+                });
+
+                // 사용자가 입력한 메시지를 서버로 전송한다.
+                function sendMessage() {
+                    var txtSend = $("#SelectedName").val() + ":" + $("#currentAcademicPoint").val() + ":" + $("#currentSocialPoint").val() + ":" + $("#currentDirectorsPoint").val();
+                    ws.send(txtSend);
+                }
+
+    </script>';
+    print '<title>Tutors Console</title><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"><link href="GivePointToStudents.css" rel="stylesheet" type="text/css"></script></head>';
 
 	$tot=0;
     $tot_result=array(
@@ -45,7 +76,7 @@
         array()
     );
 
-	$re=mysqli_query($conn,"select * from Point order by TotalPoint DESC,AcademicPoint DESC,SocialPoint DESC,Name;");
+	$re=mysqli_query($conn,"select * from Point order by id;");
 	//print '<table border="2"><tr><th>id</th><th>name</th><th>birthday</th><th>age</th></tr>';
 	while($result=mysqli_fetch_array($re)){
         //print "<tr>";
@@ -106,8 +137,12 @@
 
     print '<br><br><label for="currentTotalScore">Current Total point: </label><input type="text" id="currentTotalScore" name="currentTotalScore" value="" readonly>';
 
-    print '</div></center>';
+    print '<br><br><br><button type="button" onclick="sendMessage();">Send</button>';
+    print '<p id="log"></p>';
+
+    print '</div><div><ul id="chat"></ul></div></center>';
     mysqli_close($conn);
+    print '<script src="/GivePointToStudentsSocket.js"></script>';
 print '<div id="blankArea1" class="block"></div>';
     print '<div class="footer"><p>&copy; Copyright <script type="text/javascript">var d = new Date();document.write(d.getFullYear())</script>, Canada TEMS Academy<br><img src="https://storage.googleapis.com/tems_point_system_image_storage_2/52dee1_8a31d53908ce2a3ee4eb3194319ff85b.png" width="80px" alt="TEMS LOGO"></p><p align="right" class="ex1">Webpage created by Hongjun Yun<br>hongjun.yun@icloud.com</p></div>';
     print "</body></html>";

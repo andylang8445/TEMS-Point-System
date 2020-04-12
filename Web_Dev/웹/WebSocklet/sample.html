@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script>
+        var ws;
+
+        $(document).ready(function() {
+            ws = new WebSocket("ws://35.182.71.151:8100");
+
+            // websocket 서버에 연결되면 연결 메시지를 화면에 출력한다.
+            ws.onopen = function(e) {
+                document.getElementById("log").innerHTML = "Connected to Update Server!";
+            };
+
+            // websocket 에서 수신한 메시지를 화면에 출력한다.
+            ws.onmessage = function(e) {
+                document.getElementById("log").innerHTML = e.data;
+            };
+
+            // websocket 세션이 종료되면 화면에 출력한다.
+            ws.onclose = function(e) {
+                document.getElementById("log").style.color = "red";
+                document.getElementById("log").innerHTML = "Connection to Update Server Lost";
+            }
+        });
+
+        // 사용자가 입력한 메시지를 서버로 전송한다.
+        function sendMessage() {
+            var txtSend = $("#id").val() + ":" + $("#a").val() + ":" + $("#b").val() + ":" + $("#c").val();
+            ws.send(txtSend);
+        }
+
+    </script>
+</head>
+
+<body>
+    <form>
+        <input id="id" type="text">
+        <input id="a" type="text">
+        <input id="b" type="text">
+        <input id="c" type="text">
+        <button type="button" onclick="sendMessage();">Send</button>
+    </form>
+    <p id="log"></p>
+</body>
+
+</html>
