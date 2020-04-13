@@ -15,49 +15,77 @@ function myFunction() {
 }
 
 
-function myUpdateTotal(){
-    document.getElementById("currentTotalScore").value = parseInt(document.getElementById("currentAcademicPoint").value)+parseInt(document.getElementById("currentSocialPoint").value)+parseInt(document.getElementById("currentDirectorsPoint").value);
+function myUpdateTotal(num) {
+    if (num == 0) {
+        document.getElementById("currentTotalScore").value = "-";
+    } else {
+        document.getElementById("currentTotalScore").value = parseInt(document.getElementById("currentAcademicPoint").value) + parseInt(document.getElementById("currentSocialPoint").value) + parseInt(document.getElementById("currentDirectorsPoint").value);
+    }
 }
 
 function myCalc(num) {
-    var x = document.getElementById("currentAcademicPoint").value;
-    var result = (parseInt(x) + num);
-    document.getElementById("currentAcademicPoint").value = result;
-    myUpdateTotal();
+    if (num == 0) {
+        document.getElementById("currentAcademicPoint").value = "-";
+    } else {
+        var x = document.getElementById("currentAcademicPoint").value;
+        var result = (parseInt(x) + num);
+        document.getElementById("currentAcademicPoint").value = result;
+    }
+    myUpdateTotal(num);
 }
 
 function myCalcSocial(num) {
-    var x = document.getElementById("currentSocialPoint").value;
-    var result = (parseInt(x) + num);
-    document.getElementById("currentSocialPoint").value = result;
-    myUpdateTotal();
+    if (num == 0) {
+        document.getElementById("currentSocialPoint").value = "-";
+    } else {
+        var x = document.getElementById("currentSocialPoint").value;
+        var result = (parseInt(x) + num);
+        document.getElementById("currentSocialPoint").value = result;
+    }
+    myUpdateTotal(num);
 }
 
 function myCalcDirector(num) {
-    var x = document.getElementById("currentDirectorsPoint").value;
-    var result = (parseInt(x) + num);
-    document.getElementById("currentDirectorsPoint").value = result;
-    myUpdateTotal();
+    if (num == 0) {
+        document.getElementById("currentDirectorsPoint").value = "-";
+    } else {
+        var x = document.getElementById("currentDirectorsPoint").value;
+        var result = (parseInt(x) + num);
+        document.getElementById("currentDirectorsPoint").value = result;
+    }
+    myUpdateTotal(num);
 }
 
 
 function myDoubleCalc() {
-    var x = document.getElementById("currentAcademicPoint").value;
-    var result = (parseInt(x) * 2);
-    document.getElementById("currentAcademicPoint").value = result;
-    myUpdateTotal();
+    if (num == 0) {
+        document.getElementById("currentAcademicPoint").value = "-";
+    } else {
+        var x = document.getElementById("currentAcademicPoint").value;
+        var result = (parseInt(x) * 2);
+        document.getElementById("currentAcademicPoint").value = result;
+    }
+    myUpdateTotal(num);
 }
 
 function myDoubleCalcSocial() {
-    var x = document.getElementById("currentSocialPoint").value;
-    var result = (parseInt(x) * 2);
-    document.getElementById("currentSocialPoint").value = result;
-    myUpdateTotal();
+    if (num == 0) {
+        document.getElementById("currentSocialPoint").value = "-";
+    } else {
+        var x = document.getElementById("currentSocialPoint").value;
+        var result = (parseInt(x) * 2);
+        document.getElementById("currentSocialPoint").value = result;
+    }
+    myUpdateTotal(num);
 }
 
 function myDoubleCalcDirector() {
-    var x = document.getElementById("currentDirectorsPoint").value;
-    var result = (parseInt(x) * 2);
-    document.getElementById("currentDirectorsPoint").value = result;
-    myUpdateTotal();
+    if (num == 0) {
+        document.getElementById("currentDirectorsPoint").value = "-";
+    } else {
+        var x = document.getElementById("currentDirectorsPoint").value;
+        var result = (parseInt(x) * 2);
+        document.getElementById("currentDirectorsPoint").value = result;
+    }
+    myUpdateTotal(num);
 }

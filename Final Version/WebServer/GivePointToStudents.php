@@ -40,6 +40,12 @@
                     var txtSend = $("#SelectedName").val() + ":" + $("#currentAcademicPoint").val() + ":" + $("#currentSocialPoint").val() + ":" + $("#currentDirectorsPoint").val();
                     ws.send(txtSend);
                 }
+                
+                //전체 학생 초기화
+                function resetAll() {
+                    var txtSend = "reset:reset:reset:reset";
+                    ws.send(txtSend);
+                }
 
     </script>';
     print '<link rel="icon" type="image/ico" href="https://storage.googleapis.com/tems_point_system_image_storage_2/TitleImg.png" /><title>Tutors Console</title><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"><link href="GivePointToStudents.css" rel="stylesheet" type="text/css"></script></head>';
@@ -101,11 +107,12 @@
         //wprint "</tr>";
 		$tot++;
 	}
-  print '<body><div class="topnav"><a href="index.html">Main Console</a><a href="html_table_sql.php">Ranking Board</a><a class="active" href="">Tutor Logged In</a><a href="IamAtutor.html">LOGOUT</a></div>';
+    print '<body><div class="topnav"><a href="index.html">Main Console</a><a href="html_table_sql.php">Ranking Board</a><a class="active" href="">Tutor Logged In</a><a href="IamAtutor.html">LOGOUT</a></div>';
     echo '<script type="text/javascript" src="GivePointToStudents.js"></script>';
     echo '<div class="block"></div>';
 
-    print '<div style="display:none"><table id="myTable"><tr><th>Name</th><th>Age</th><th>Academic Point</th><th>Social Point</th><th>Directors Point</th><th>Total Point</th></tr>';
+
+    print '<center><div style="display:none"><table id="myTable" border="2"><tr><th align="center">id</th><th align="center">Name</th><th align="center">Academic Points</th><th align="center">Social Contribution Points</th><th align="center">Directors Points</th><th align="center">Total Points</th></tr>';
     for($i=0;$i<$tot;$i++){
         print "<tr>" ;
         print "<td align='center'>" .$tot_result[$i][0]."</td>";
@@ -117,8 +124,7 @@
 
         print "</tr>" ;
     }
-    print "<tr><td align='center'>Name</td><td align='center'>18</td><td align='center'><p id='LoadedPoint99'>20</p></td></tr>";
-    print '</table></div>';
+    print '</table></div></center>';
 
 
     print '<center><div class="block"><select name="Name" id="SelectedName" onchange="myFunction()"><option selected value="0" disabled>please select the student</option>';//<th align="center" width="40"><button id="id_sec" onclick="sortTable1_1();" style="width:100%; height:25px; font-size:10.2pt"><strong>id &#62;</strong></button></th>
@@ -136,14 +142,54 @@
     print '<br><br><label for="currentDirectorsPoint">Current Director point: </label><input type="text" id="currentDirectorsPoint" name="currentDirectorsPoint" placeholder="Director Point">';
     print '<br><button id="M10" onclick="myCalcDirector(-10)">-10</button><button id="M5" onclick="myCalcDirector(-5)">-5</button><button id="P5" onclick="myCalcDirector(5)">+5</button><button id="P10" onclick="myCalcDirector(10)">+10</button><button id="P15" onclick="myCalcDirector(15)">+15</button><button id="P20" onclick="myCalcDirector(20)">+20</button><button id="P50" onclick="myCalcDirector(50)">+50</button><button id="Double" onclick="myDoubleCalcDirector()">X2</button>';
 
-    print '<br><br><label for="currentTotalScore">Current Total point: </label><input type="text" id="currentTotalScore" name="currentTotalScore" value="" readonly>';
+    print '<br><br><label for="currentTotalScore">Current Total point: </label><input type="text" id="currentTotalScore" name="currentTotalScore" placeholder="Total Point" value="" readonly>';
 
-    print '<br><br><br><button type="button" onclick="sendMessage();">Send</button>';
+    print '<br><br><button type="button" onclick="sendMessage();" class="GreenButton">Send</button>';
     print '<p id="log"></p>';
 
-    print '</div><div><ul id="chat"></ul></div></center>';
+    print '</div><div><ul id="chat"></ul></div><button type="button" onclick="resetAll();" class="BigRedButton">Reset Point System</button></center>';
+
+    print '<br><br><br>';
+
+
+    $re=mysqli_query($conn,"select * from Point order by TotalPoint desc;");
+    $tot=0;
+    //print '<table border="2"><tr><th>id</th><th>name</th><th>birthday</th><th>age</th></tr>';
+    while($result=mysqli_fetch_array($re)){
+          //print "<tr>";
+        //print "<td>".$result[3]."</td>";
+          $tot_result[$tot][0]=$result[0];//id
+        //print "<td>".$result[0]."</td>";
+          $tot_result[$tot][1]=$result[1];//name
+        //print "<td>".$result[1]."</td>";
+          $tot_result[$tot][2]=$result[2];//Academic Point
+        //print "<td>".$result[2]."</td>";
+          $tot_result[$tot][3]=$result[3];//Social Contribution point
+
+          $tot_result[$tot][4]=$result[4];//Director's point
+          $tot_result[$tot][5]=$result[5];//Total point
+        
+		  $tot++;
+          }
+
+
+    print '<hr class="s9">';
+    print '<center><p><h2>Live Ranking</h2>';
+    print '<div><table id="myVisibleTable" border="2"><tr><th align="center">Name</th><th align="center">Academic Points</th><th align="center">Social Contribution Points</th><th align="center">Directors Points</th><th align="center">Total Points</th></tr>';
+    for($i=0;$i<$tot;$i++){
+        print "<tr>";
+        print "<td align='center'>" .$tot_result[$i][1]."</td>";
+        print "<td align='center'>" .$tot_result[$i][2]."</p></td>";
+        print "<td align='center'>" .$tot_result[$i][3]."</p></td>";
+        print "<td align='center'>" .$tot_result[$i][4]."</p></td>";
+        print "<td align='center'>" .$tot_result[$i][5]."</p></td>";
+
+        print "</tr>" ;
+    }
+    print '</table></div></p></center>';
+
     mysqli_close($conn);
-print '<div id="blankArea1" class="block"></div>';
+    print '<div id="blankArea1" class="block"></div>';
     print '<div class="footer"><p>&copy; Copyright <script type="text/javascript">var d = new Date();document.write(d.getFullYear())</script>, Canada TEMS Academy<br><img src="https://storage.googleapis.com/tems_point_system_image_storage_2/52dee1_8a31d53908ce2a3ee4eb3194319ff85b.png" width="80px" alt="TEMS LOGO"></p><p align="right" class="ex1">Webpage created by Hongjun Yun<br>hongjun.yun@icloud.com</p></div>';
     print "</body></html>";
 ?>
