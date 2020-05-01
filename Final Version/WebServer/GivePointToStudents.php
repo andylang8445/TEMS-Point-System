@@ -40,7 +40,7 @@
                     var txtSend = $("#SelectedName").val() + ":" + $("#currentAcademicPoint").val() + ":" + $("#currentSocialPoint").val() + ":" + $("#currentDirectorsPoint").val();
                     ws.send(txtSend);
                 }
-                
+
                 //전체 학생 초기화
                 function resetAll() {
                     var txtSend = "reset:reset:reset:reset";
@@ -168,7 +168,7 @@
 
           $tot_result[$tot][4]=$result[4];//Director's point
           $tot_result[$tot][5]=$result[5];//Total point
-        
+
 		  $tot++;
           }
 
