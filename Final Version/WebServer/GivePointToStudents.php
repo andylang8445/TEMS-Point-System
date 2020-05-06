@@ -48,7 +48,7 @@
                 }
 
     </script>';
-    print '<link rel="icon" type="image/ico" href="https://storage.googleapis.com/tems_point_system_image_storage_2/TitleImg.png" /><title>Tutors Console</title><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"><link href="GivePointToStudents.css" rel="stylesheet" type="text/css"></script></head>';
+    print '<link rel="icon" type="image/ico" href="https://imgur.com/i2ziR1y" /><title>Tutors Console</title><link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css"><link href="GivePointToStudents.css" rel="stylesheet" type="text/css"></script></head>';
 
 	$tot=0;
     $tot_result=array(
@@ -190,6 +190,6 @@
 
     mysqli_close($conn);
     print '<div id="blankArea1" class="block"></div>';
-    print '<div class="footer"><p>&copy; Copyright <script type="text/javascript">var d = new Date();document.write(d.getFullYear())</script>, Canada TEMS Academy<br><img src="https://storage.googleapis.com/tems_point_system_image_storage_2/52dee1_8a31d53908ce2a3ee4eb3194319ff85b.png" width="80px" alt="TEMS LOGO"></p><p align="right" class="ex1">Webpage created by Hongjun Yun<br>hongjun.yun@icloud.com</p></div>';
+    print '<div class="footer"><p>&copy; Copyright <script type="text/javascript">var d = new Date();document.write(d.getFullYear())</script>, Canada TEMS Academy<br><img src="https://i.imgur.com/DnAT5wd.png" width="80px" alt="TEMS LOGO"></p><p align="right" class="ex1">Webpage created by Hongjun Yun<br>hongjun.yun@icloud.com</p></div>';
     print "</body></html>";
 ?>
