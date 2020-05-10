@@ -1,8 +1,8 @@
 <?php
 session_start();
-$DATABASE_HOST = '34.66.52.207';
-$DATABASE_USER = 'dbaccess';
-$DATABASE_PASS = '0000';
+$DATABASE_HOST = 'ls-a161fb9a6525ce8b6fc77e418dfbb36d3dde43b7.cdxfxlufjm0m.ca-central-1.rds.amazonaws.com';
+$DATABASE_USER = 'dbmasteruser';
+$DATABASE_PASS = '=-`x&pHEQC!LZ~G4U&*F3%m{X,9eEo*!';
 $DATABASE_NAME = 'TEMS_SQL_Point';
 // Try and connect using the info above.
 $con = mysqli_connect($DATABASE_HOST, $DATABASE_USER, $DATABASE_PASS, $DATABASE_NAME);

@@ -1,7 +1,7 @@
 <?php
-    $sql_addr = "34.66.52.207";
-    $sql_user_name="dbaccess";
-    $sql_pwd="0000";
+    $sql_addr = "ls-a161fb9a6525ce8b6fc77e418dfbb36d3dde43b7.cdxfxlufjm0m.ca-central-1.rds.amazonaws.com";
+    $sql_user_name="dbmasteruser";
+    $sql_pwd="=-`x&pHEQC!LZ~G4U&*F3%m{X,9eEo*!";
     $sql_db_name="TEMS_SQL_Point";
     $sql_table_name_of_it="Point";
 	$conn = mysqli_connect($sql_addr,$sql_user_name,$sql_pwd,$sql_db_name) or die("Connection Failed");

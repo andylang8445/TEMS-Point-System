@@ -15,12 +15,8 @@ function myFunction() {
 }
 
 
-function myUpdateTotal(num) {
-    if (num == 0) {
-        document.getElementById("currentTotalScore").value = "-";
-    } else {
-        document.getElementById("currentTotalScore").value = parseInt(document.getElementById("currentAcademicPoint").value) + parseInt(document.getElementById("currentSocialPoint").value) + parseInt(document.getElementById("currentDirectorsPoint").value);
-    }
+function myUpdateTotal() {
+    document.getElementById("currentTotalScore").value = parseInt(document.getElementById("currentAcademicPoint").value) + parseInt(document.getElementById("currentSocialPoint").value) + parseInt(document.getElementById("currentDirectorsPoint").value);
 }
 
 function myCalc(num) {
@@ -31,7 +27,7 @@ function myCalc(num) {
         var result = (parseInt(x) + num);
         document.getElementById("currentAcademicPoint").value = result;
     }
-    myUpdateTotal(num);
+    myUpdateTotal();
 }
 
 function myCalcSocial(num) {
@@ -42,7 +38,7 @@ function myCalcSocial(num) {
         var result = (parseInt(x) + num);
         document.getElementById("currentSocialPoint").value = result;
     }
-    myUpdateTotal(num);
+    myUpdateTotal();
 }
 
 function myCalcDirector(num) {
@@ -53,39 +49,27 @@ function myCalcDirector(num) {
         var result = (parseInt(x) + num);
         document.getElementById("currentDirectorsPoint").value = result;
     }
-    myUpdateTotal(num);
+    myUpdateTotal();
 }
 
 
 function myDoubleCalc() {
-    if (num == 0) {
-        document.getElementById("currentAcademicPoint").value = "-";
-    } else {
-        var x = document.getElementById("currentAcademicPoint").value;
-        var result = (parseInt(x) * 2);
-        document.getElementById("currentAcademicPoint").value = result;
-    }
-    myUpdateTotal(num);
+    var x = document.getElementById("currentAcademicPoint").value;
+    var result = (parseInt(x) * 2);
+    document.getElementById("currentAcademicPoint").value = result;
+    myUpdateTotal();
 }
 
 function myDoubleCalcSocial() {
-    if (num == 0) {
-        document.getElementById("currentSocialPoint").value = "-";
-    } else {
-        var x = document.getElementById("currentSocialPoint").value;
-        var result = (parseInt(x) * 2);
-        document.getElementById("currentSocialPoint").value = result;
-    }
-    myUpdateTotal(num);
+    var x = document.getElementById("currentSocialPoint").value;
+    var result = (parseInt(x) * 2);
+    document.getElementById("currentSocialPoint").value = result;
+    myUpdateTotal();
 }
 
 function myDoubleCalcDirector() {
-    if (num == 0) {
-        document.getElementById("currentDirectorsPoint").value = "-";
-    } else {
-        var x = document.getElementById("currentDirectorsPoint").value;
-        var result = (parseInt(x) * 2);
-        document.getElementById("currentDirectorsPoint").value = result;
-    }
-    myUpdateTotal(num);
+    var x = document.getElementById("currentDirectorsPoint").value;
+    var result = (parseInt(x) * 2);
+    document.getElementById("currentDirectorsPoint").value = result;
+    myUpdateTotal();
 }

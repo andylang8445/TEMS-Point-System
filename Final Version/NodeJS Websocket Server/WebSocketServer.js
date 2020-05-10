@@ -4,9 +4,9 @@ var wss = new WebSocketServer({
 });
 let mysql = require('mysql');
 let config = {
-    host: "34.66.52.207",
-    user: "dbedit",
-    password: "tutor33",
+    host: "ls-a161fb9a6525ce8b6fc77e418dfbb36d3dde43b7.cdxfxlufjm0m.ca-central-1.rds.amazonaws.com",
+    user: "dbmasteruser",
+    password: "=-`x&pHEQC!LZ~G4U&*F3%m{X,9eEo*!",
     database: "TEMS_SQL_Point"
 };
 
