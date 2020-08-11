@@ -1,4 +1,4 @@
-<?php
+ <?php
     $sql_addr = "ls-a161fb9a6525ce8b6fc77e418dfbb36d3dde43b7.cdxfxlufjm0m.ca-central-1.rds.amazonaws.com";
     $sql_user_name="dbmasteruser";
     $sql_pwd="=-`x&pHEQC!LZ~G4U&*F3%m{X,9eEo*!";
